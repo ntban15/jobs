@@ -5,7 +5,8 @@ import Slides from '../components/Slides';
 // specify content and color for each slide
 const SLIDES_DATA = [
     { id: 1, text: 'Welcome to Job Finder', color: '#b2dfdb' },
-    { id: 2, text: 'Job Finder will help you find a local job', color: '#ffecb3' }
+    { id: 2, text: 'Find a local job', color: '#ffecb3' },
+    { id: 3, text: 'Save jobs by swiping', color: '#40c489' }
 ];
 
 class WelcomeScreen extends Component {

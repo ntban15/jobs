@@ -53,7 +53,6 @@ class Slides extends Component {
 const styles = StyleSheet.create({
     slideText: {
         fontSize: 30,
-        fontWeight: 'bold',
         textAlign: 'center'
     },
     slideStyle: {
