@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, AsyncStorage } from 'react-native';
 import Slides from '../components/Slides';
 
 // specify content and color for each slide
@@ -13,6 +13,11 @@ class WelcomeScreen extends Component {
     static navigationOptions = {
         tabBarVisible: false
     };
+
+    componentDidMount() {
+        // temp code to remove token
+        // AsyncStorage.removeItem('@MyStore:fb_token');
+    }
 
     // no need to bind this
     onSlidesFinish = () => {
