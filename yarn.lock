@@ -3133,7 +3133,7 @@ react-native-vector-icons@4.4.2:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-"react-native@https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz":
+react-native@0.52.0, "react-native@https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz":
   version "0.52.0"
   resolved "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz#e46ac1a9ff6d48db801c1937c5c2ea9353415818"
   dependencies:
@@ -3192,6 +3192,15 @@ react-native-vector-icons@4.4.2:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
+react-navigation-utils@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-navigation-utils/-/react-navigation-utils-0.0.11.tgz#8124cb6c193328edbcb010d45a0ee212396f76e5"
+  dependencies:
+    prop-types "^15.6.0"
+    react "16.0.0"
+    react-native "0.52.0"
+    react-navigation "^1.0.0-beta.27"
+
 react-navigation@^1.0.0-beta.27:
   version "1.0.0-beta.27"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.27.tgz#e6263b01975cd790e32b3711c2eb6cead96c102c"
@@ -3232,6 +3241,15 @@ react-transform-hmr@^1.0.4:
   dependencies:
     global "^4.3.0"
     react-proxy "^1.1.7"
+
+react@16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@16.2.0:
   version "16.2.0"

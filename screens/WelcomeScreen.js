@@ -10,13 +10,13 @@ const SLIDES_DATA = [
 ];
 
 class WelcomeScreen extends Component {
-    static navigationOptions = {
-        tabBarVisible: false
-    };
+    // static navigationOptions = {
+    //     tabBarVisible: false
+    // };
 
-    componentDidMount() {
+    componentWillMount() {
         // temp code to remove token
-        // AsyncStorage.removeItem('@MyStore:fb_token');
+        // AsyncStorage.removeItem('@MyStore:token');
     }
 
     // no need to bind this

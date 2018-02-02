@@ -6,9 +6,25 @@ import { connect } from 'react-redux'; // use connect to make this Component lis
 import * as actions from '../actions'; // import all actions
 
 class AuthScreen extends Component {
-    static navigationOptions = {
-        tabBarVisible: false // hide tab bar when scroll to this screen
-    };
+    // can put this navigationOptions straight to the RootNavigator
+    // static navigationOptions = {
+    //     tabBarVisible: false // hide tab bar when scroll to this screen
+    // };
+
+    componentWillMount() {
+         // check if user is already logged in
+        // this will call action to get token
+        // the state token will be passed into new props
+        this.props.checkAuth();
+    }
+
+    // this will be called whenever Component is about to receive new props
+    // especially when Redux State is changed
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.token) {
+            this.props.navigation.navigate('Main');
+        }
+    }
 
     render() {
         return(
@@ -29,5 +45,11 @@ styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = ({ auth }) => {
+    return {
+        token: auth.token // get token from AuthReducer
+    };
+};
+
 // all actions will be stored in this.props
-export default connect(null, actions)(AuthScreen);
+export default connect(mapStateToProps, actions)(AuthScreen);

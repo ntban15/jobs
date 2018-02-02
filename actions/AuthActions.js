@@ -15,8 +15,8 @@ const APP_ID = '1820345688009478';
 // when the action creator is invoked, thunk invoke the function
 // because the function we return make use of await,
 // we have to annotate it with async keyword
-export const facebookLogin = () => async dispatch => {
-    let token = await AsyncStorage.getItem('@MyStore:fb_token');
+export const checkAuth = () => async dispatch => {
+    let token = await AsyncStorage.getItem('@MyStore:token');
     if (token) {
         // Dispatch action saying FB Login is done
         // have to return it
@@ -25,16 +25,9 @@ export const facebookLogin = () => async dispatch => {
             payload: token
         });
     }
-    else {
-        // Start FB login process
-        // pass dispatch function to the helper function
-        // to give it access to redux thunk
-        startFBLogin(dispatch);
-    }
 };
 
-// another function, have to use const
-const startFBLogin = async dispatch => {
+export const facebookLogin = () => async dispatch => {
     // Expo FB Login return a object with type and token properties
     let { type, token } = await Facebook.logInWithReadPermissionsAsync(APP_ID, {
         permissions: ['public_profile']
@@ -43,7 +36,7 @@ const startFBLogin = async dispatch => {
     // and save the token to AsyncStorage
     if (type === 'success') {
         // persist token
-        await AsyncStorage.setItem('@MyStore:fb_token', token);
+        await AsyncStorage.setItem('@MyStore:token', token);
         // dispatch FB_SUCCESS
         dispatch({
             type: FB_LOGIN_SUCCESS,

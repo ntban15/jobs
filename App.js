@@ -13,13 +13,16 @@ import SettingScreen from './screens/SettingScreen';
 
 export default class App extends React.Component {
   render() {
+
     // put Navigator in Root application file
-    const RootNavigator = TabNavigator({
+    const RootNavigator = StackNavigator({
       Welcome: { // each Screen has a key, must be unique
-        screen: WelcomeScreen // what Component related to this screen
+        screen: WelcomeScreen, // what Component related to this screen
+        navigationOptions: { header: null } // override navigation options for screen
       },
       Auth: {
-        screen: AuthScreen
+        screen: AuthScreen,
+        navigationOptions: { header: null } 
       },
       Main: { // main flow contains another TabNavigator
         screen: TabNavigator({ // must be assigned to screen property
@@ -39,13 +42,9 @@ export default class App extends React.Component {
               }
             }) 
           } 
-        }, {
-          tabBarPosition: 'bottom' // set tab bar to bottom
-        })
+        }),
+        navigationOptions: { header: null }
       }
-    }, {
-      tabBarPosition: 'bottom',
-      swipeEnabled: false // disable swipe
     });
 
     return (
