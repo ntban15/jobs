@@ -52,14 +52,14 @@ class DeckScreen extends Component {
 
     render() {
         return(
-            <View>
-                <Text>DeckScreen</Text>
-                <Text>DeckScreen</Text>
-                <Text>DeckScreen</Text>
-                <Text>DeckScreen</Text>
-                <Text>DeckScreen</Text>
-                <Text>DeckScreen</Text>
-            </View>
+            <Deck 
+                data={this.props.jobs}
+                keyProp="id"
+                onSwipeLeft={this.onSwipeLeft}
+                onSwipeRight={this.onSwipeRight}
+                renderCard={this.renderCard}
+                renderNoMoreCard={this.renderNoMoreCard}
+            />
         );
     }
 }
