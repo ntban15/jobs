@@ -2,7 +2,7 @@ import axios from 'axios';
 import reverseGeocode from 'latlng-to-zip'; // library to convert lat and lng to zip code
 
 import {
-    FETCH_JOBS_COMPLETE, LIKE_JOB
+    FETCH_JOBS_COMPLETE, LIKE_JOB, RESET_LIKES
 } from './types';
 
 const GITHUB_JOBS_BASE_URL = 'https://jobs.github.com/positions.json';
@@ -37,4 +37,10 @@ export const likeJob = job => {
         type: LIKE_JOB,
         payload: job
     }
+};
+
+export const resetLikes = () => {
+    return {
+        type: RESET_LIKES
+    };
 };

@@ -1,5 +1,5 @@
 import { uniqBy } from 'lodash';
-import { LIKE_JOB } from '../actions/types';
+import { LIKE_JOB, RESET_LIKES } from '../actions/types';
 
 // state start as an empty array
 export default function(state = [], action) {
@@ -9,6 +9,9 @@ export default function(state = [], action) {
             return uniqBy([
                 action.payload, ...state // spread the current array and add a new element
             ], 'id'); // the second argument is the property to keep the uniqueness of elements
+        case RESET_LIKES: {
+            return [];
+        }
         default:
             return state;
     }

@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import { fetchJobs } from '../actions';
 
 class MapScreen extends Component {
+    static navigationOptions = {
+        title: 'Map'
+    };
+
     // initial postion of the Map
     state = {
         region: {
@@ -43,7 +47,7 @@ class MapScreen extends Component {
                 />
 
                 <View style={styles.buttonContainer}>
-                    <Button 
+                    <Button
                         large
                         title="Search this position"
                         backgroundColor="#009688"

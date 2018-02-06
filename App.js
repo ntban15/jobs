@@ -35,16 +35,22 @@ export default class App extends React.Component {
           ReviewFlow: { 
             screen: StackNavigator({
               Review: {
-                screen: ReviewScreen
+                screen: ReviewScreen,
+                navigationOptions: { }
               },
               Setting: {
-                screen: SettingScreen
+                screen: SettingScreen,
+                navigationOptions: { }
               }
+            }, {
+              headerMode: 'none' // solves double header
             }) 
           } 
         }),
-        navigationOptions: { header: null }
+        navigationOptions: { }
       }
+    }, {
+      headerMode: 'screen' // solves double header
     });
 
     return (

@@ -9,6 +9,9 @@ import Deck from '../components/Deck';
 // const parse_des = /^<p>.+<\/p>[\n\s]+<p>(.)<\/p>/;
 
 class DeckScreen extends Component {
+    static navigationOptions = {
+        title: 'Jobs'
+    };
 
     // define layout for deck item
     renderCard(job) {
@@ -30,10 +33,20 @@ class DeckScreen extends Component {
     }
 
     // define layout for empty deck
-    renderNoMoreCard() {
+    // have to make Arrow function because of this will binded to Deck component
+    // otherwise
+    renderNoMoreCard = () => {
         return (
             <Card>
                 <Text>No more jobs!</Text>
+                <Button
+                    style={{ marginTop: 10 }}
+                    title="Get more jobs"
+                    large
+                    borderRadius={10}
+                    icon={{ name: 'my-location' }}
+                    onPress={() => this.props.navigation.navigate('Map')}
+                />
             </Card>
         );
     }
