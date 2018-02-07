@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import store from './store';
+import { store, persistor } from './store';
 import WelcomeScreen from './screens/WelcomeScreen';
 import AuthScreen from './screens/AuthScreen';
 import MapScreen from './screens/MapScreen';
@@ -55,10 +56,14 @@ export default class App extends React.Component {
 
     return (
       // every component in the app will now have access to the store
-      <Provider store={store}> 
-        <View style={styles.container}>
-          <RootNavigator />
-        </View>
+      // must wrap with PersistGate to deter components rendering
+      // until redux is loaded with persisted state
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <View style={styles.container}>
+            <RootNavigator />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
