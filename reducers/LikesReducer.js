@@ -9,7 +9,7 @@ export default function(state = [], action) {
         // if there is some changes in the structure of data
         // must use migration. See reduxt-persist migration
         case REHYDRATE: // when redux is warming up and persist is loading state from storage
-            if (action.payload.likedJobs) // where our previous state is stored
+            if (action.payload && action.payload.likedJobs) // where our previous state is stored
                 return action.payload.likedJobs; // it can be null (first time running)
             else
                 return []; // return empty array when null

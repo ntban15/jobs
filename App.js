@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert, AsyncStorage } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Notifications } from 'expo';
 
 import { store, persistor } from './store';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -11,10 +12,35 @@ import MapScreen from './screens/MapScreen';
 import DeckScreen from './screens/DeckScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import SettingScreen from './screens/SettingScreen';
+import registerForPushNotifications from './services/PushNotifications';
 
 export default class App extends React.Component {
-  render() {
+  componentDidMount() {
+    //AsyncStorage.removeItem('@MyStore:push_token');
 
+    registerForPushNotifications();
+    // Handle notifications that are received or selected while the app
+    // is open. If the app was closed and then opened by tapping the
+    // notification (rather than just tapping the app icon to open it),
+    // this function will fire on the next tick after the app starts
+    // with the notification data.
+    this._notificationSubscription = Notifications.addListener(notification => {
+      // 2-level deep destructuring
+      const { data: { text }, origin } = notification; 
+
+      // check expo docs for more information of origin
+      if ((origin === 'selected' || origin === 'received') && text) {
+          Alert.alert(
+          'Push notification received',
+          text,
+          [{ text: 'OK', onPress: () => {} }],
+          { cancelable: true }
+        );
+      }
+    });
+  }
+
+  render() {
     // put Navigator in Root application file
     const RootNavigator = StackNavigator({
       Welcome: { // each Screen has a key, must be unique
